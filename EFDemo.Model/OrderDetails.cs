@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EFCoreDemo.Model
 {
     public class OrderDetails
     {
-        public Guid Id { get; set; }
+        [Key]
+        public string Id { get; set; }
+        [Required]
+        [MaxLength(50)]
+        [ForeignKey("Order")]
+        public string OrderId { get; set; }
+        [Required]
+        [MaxLength(125)]
+        [ForeignKey("Product")]
+        public string ProductId { get; set; }
+        [Required]
+        [StringLength(10)]
         public Order Order { get; set; }
-        public ICollection<Product> Products { get; set; }
-        public double Price { get; set; }
+        public Product Products { get; set; }
+        public double UnitPrice { get; set; }
         public int Quantity { get; set; }
-        public double Discount { get; set; }
-        public bool Fulfilled { get; set; }
+        public string PaymentMethod { get; set; }
     }
 }

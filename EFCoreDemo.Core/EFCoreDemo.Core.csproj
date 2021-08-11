@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EFCoreDemo.Commons\EFCoreDemo.Commons.csproj" />
+    <ProjectReference Include="..\EFDemo.Model\EFCoreDemo.Model.csproj" />
   </ItemGroup>
 
 </Project>
