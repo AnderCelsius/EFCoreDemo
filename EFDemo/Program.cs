@@ -20,6 +20,9 @@ namespace EFCoreDemo.UI
 
             DemoContext context = serviceProvider.GetRequiredService<DemoContext>();
             Seeder.SeedData(context).Wait();
+
+            RunApp run = new RunApp();
+            run.Start();
             
         }
 
