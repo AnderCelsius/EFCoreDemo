@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EFCoreDemo.Commons\EFCoreDemo.Commons.csproj" />
     <ProjectReference Include="..\EFCoreDemo.Core\EFCoreDemo.Core.csproj" />
     <ProjectReference Include="..\EFCoreDemo.Database\EFCoreDemo.Database.csproj" />
   </ItemGroup>
