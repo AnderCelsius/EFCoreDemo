@@ -13,21 +13,6 @@ namespace EFCoreDemo.Database
     {
         public static async Task SeedData(DemoContext context)
         {
-            
-
-            
-
-            
-
-            
-
-            
-
-            //var orderDetailsData = File.ReadAllText(@"C:\Users\hp\source\repos\EFDemo\EFCoreDemo.Database\JsonFiles\OrderDetails.json");
-            //var listOfOrders = JsonConvert.DeserializeObject<List<OrderDetails>>(orderDetailsData);
-            //await context.OrderDetails.AddRangeAsync(listOfOrders);
-
-            context.SaveChanges();
             try
             {
                 context.Database.EnsureCreated();
@@ -55,6 +40,12 @@ namespace EFCoreDemo.Database
                     var listOfCategories = JsonConvert.DeserializeObject<List<Category>>(categoriesData);
                     await context.Categories.AddRangeAsync(listOfCategories);
                 }
+                if (!context.OrderDetails.Any())
+                {
+                    var orderDetailsData = File.ReadAllText(@"C:\Users\hp\source\repos\EFDemo\EFCoreDemo.Database\JsonFiles\OrderDetails.json");
+                    var listOfOrders = JsonConvert.DeserializeObject<List<OrderDetails>>(orderDetailsData);
+                    await context.OrderDetails.AddRangeAsync(listOfOrders);
+                }
                 if (!context.Orders.Any())
                 {
                     var ordersData = File.ReadAllText(@"C:\Users\hp\source\repos\EFDemo\EFCoreDemo.Database\JsonFiles\Orders.json");
@@ -67,6 +58,9 @@ namespace EFCoreDemo.Database
                     var listOfProducts = JsonConvert.DeserializeObject<List<Product>>(productData);
                     await context.Products.AddRangeAsync(listOfProducts);
                 }
+                
+                
+                context.SaveChanges();
             }
             catch (Exception)
             {

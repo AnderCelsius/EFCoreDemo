@@ -17,7 +17,7 @@ namespace EFCoreDemo.Model
 
         [ForeignKey("Supplier")]
         public string SupplierId { get; set; }
-        public ICollection<ProductSupplier> ProductSuppliers { get; set; }
+       // public ICollection<ProductSupplier> ProductSuppliers { get; set; }
 
         [StringLength(125)]
         public string CategoryId { get; set; }

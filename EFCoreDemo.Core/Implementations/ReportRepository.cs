@@ -1,4 +1,5 @@
 ﻿using EFCoreDemo.Commons;
+using EFCoreDemo.Core.Interfaces;
 using EFCoreDemo.Model;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace EFCoreDemo.Core
 {
-    public class SalesReportRepository
+    public class ReportRepository : IReportRepository
     {
         public void PrintCustomers(ICollection<Customer> listOfCustomers)
         {
@@ -38,7 +39,7 @@ namespace EFCoreDemo.Core
                     o.Status,
                     o.TotalAmount.ToString()
                 });
-            string[] header = new[] { "Order Date", "Customer Name", "Shipper", "Order Status", "Total Amount"};
+            string[] header = new[] { "Order Date", "Customer Name", "Shipper", "Order Status", "Total Amount" };
             Print(header, customersWithHighestOrderAmount);
         }
 
@@ -71,10 +72,10 @@ namespace EFCoreDemo.Core
                 .Select(s =>
                 s.OrderDetails.Select(od => new string[]{
                     s.OrderDate.ToShortDateString(),
-                    od.Products.ProductName,
-                    od.Products.UnitPrice.ToString(),
+                    od.Product.ProductName,
+                    od.Product.UnitPrice.ToString(),
                     od.Quantity.ToString(),
-                    (od.Quantity * od.Products.UnitPrice).ToString("N1", CultureInfo.InvariantCulture)
+                    (od.Quantity * od.Product.UnitPrice).ToString("N1", CultureInfo.InvariantCulture)
                 }).Take(1));
             string[] header = new[] { "Order Date", "Product Name", "Unit Price", "Quantity", "Total Amount" };
 
@@ -90,19 +91,16 @@ namespace EFCoreDemo.Core
 
         private static void Print(string[] header, IEnumerable<string[]> data)
         {
-            
             PrintTable.PrintLine();
             PrintTable.PrintRow(header);
             PrintTable.PrintLine();
             foreach (var item in data)
             {
                 PrintTable.PrintRow(item);
-                PrintTable.PrintRow();
-            }
-            {
+                PrintTable.PrintLine();
 
             }
         }
     }
-    
+
 }

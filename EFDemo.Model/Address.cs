@@ -22,6 +22,6 @@ namespace EFCoreDemo.Model
         public string State { get; set; }
         public string PostalCode { get; set; }
         public ICollection<Customer> Customers { get; set; }
-        public ICollection<Address> Addresses { get; set; }
+        public ICollection<Supplier> Suppliers { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace EFCoreDemo.Database
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Shipper> Shippers { get; set; }
-        public DbSet<ProductSupplier> ProductSuppliers { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Address> Address { get; set; }
         
@@ -27,7 +26,7 @@ namespace EFCoreDemo.Database
 
             modelBuilder.Entity<Order>().HasMany(x => x.OrderDetails).WithOne(x => x.Order);
 
-            modelBuilder.Entity<Product>().HasMany(x => x.OrderDetails).WithOne(x => x.Products);
+            modelBuilder.Entity<Product>().HasMany(x => x.OrderDetails).WithOne(x => x.Product);
 
             modelBuilder.Entity<Order>()
                         .HasOne<Customer>(s => s.Customer)
@@ -44,7 +43,6 @@ namespace EFCoreDemo.Database
                         .WithMany(g => g.Products)
                         .HasForeignKey(s => s.CategoryId);
 
-            modelBuilder.Entity<ProductSupplier>().HasKey(sc => new { sc.ProductId, sc.SupplierId });
         }
     }
 }

@@ -20,7 +20,8 @@ namespace EFCoreDemo.Model
         [Required]
         [StringLength(15)]
         public string Phone { get; set; }
+        public Address Address { get; set; }
 
-        public ICollection<ProductSupplier> ProductSuppliers { get; set; }
+        //public ICollection<ProductSupplier> ProductSuppliers { get; set; }
     }
 }

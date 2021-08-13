@@ -18,10 +18,8 @@ namespace EFCoreDemo.Model
         [MaxLength(125)]
         [ForeignKey("Product")]
         public string ProductId { get; set; }
-        [Required]
-        [StringLength(10)]
         public Order Order { get; set; }
-        public Product Products { get; set; }
+        public Product Product { get; set; }
         public double UnitPrice { get; set; }
         public int Quantity { get; set; }
         public string PaymentMethod { get; set; }

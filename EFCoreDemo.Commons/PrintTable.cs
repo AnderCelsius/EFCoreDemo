@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EFCoreDemo.UI
+namespace EFCoreDemo.Commons
 {
     public class PrintTable
     {
@@ -27,5 +27,6 @@ namespace EFCoreDemo.UI
             return string.IsNullOrEmpty(colText) ? new string(' ', width)
                 : colText.PadRight(width - ((width - colText.Length) / 2)).PadLeft(width);
         }
+
     }
 }
